@@ -4,10 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>해커톤 템플릿 프로젝트</title>
+  <title>숫자야구 게임</title>
   <link rel="stylesheet" href="./index.scss">
 </head>
 <body>
-  <h1>해커톤 템플릿 프로젝트</h1>
+  <h1>숫자야구 게임</h1>
+  <div class="pitch">
+    <div class="pitch-input">
+      <span class="pitch-input__message"></span>
+      <input type="text" class="pitch-input__digit">
+      <input type="text" class="pitch-input__digit">
+      <input type="text" class="pitch-input__digit">
+      <button type="button">Pitch</button>
+      <button type="button">Restart</button>
+    </div>
+  </div>
+  <div class="game-result">
+    <ul class="game-result__list"></ul>
+  </div>
+  <script src="./index.js"></script>
 </body>
 </html>
