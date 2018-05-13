@@ -1,5 +1,149 @@
-$main-color: skyblue;
+$primary-color: #338A2E;
+$main-color: #AA9039;
+$point-color: #A8383B;
+$main-font: 'Open Sans', sans-serif;
+$design-font: 'Anton', sans-serif;
+$sub-design-font: 'Pangolin', cursive;
+// $sub-font: 'Nanum Gothic', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Anton|Nanum+Gothic|Open+Sans|Pangolin');
 
 body {
+  margin: 0;
+  font-family: $main-font;
   background-color: $main-color;
+  background-image: 
+    radial-gradient(circle at 50% 50%, transparent, transparent 15px, $main-color 15px),
+    repeating-linear-gradient(90deg, lighten($main-color, 15%), lighten($main-color, 15%) 1px, transparent 1px, transparent 5px),
+    radial-gradient(circle at 50% 10px, lighten($main-color, 15%), lighten($main-color, 15%) 8px, transparent 8px),
+    radial-gradient(circle at 50% 40px, lighten($main-color, 15%), lighten($main-color, 15%) 8px, transparent 8px),
+    radial-gradient(circle at 50% 10px, lighten($main-color, 5%), lighten($main-color, 5%) 10px, transparent 10px),
+    radial-gradient(circle at 50% 40px, lighten($main-color, 5%), lighten($main-color, 5%) 10px, transparent 10px),
+    radial-gradient(circle at 50% 50%, lighten($main-color, 15%), lighten($main-color, 15%) 15px, transparent 15px);
+  background-size: 50px 50px;
+}
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.game-title {
+  margin: 1em 0 0.5em;
+  color: darken($point-color, 10%);
+  font-size: 3em;
+  font-family: $design-font;
+  line-height: 1.2;
+  text-align: center;
+  position: relative;
+  // $shadow-color: lighten($main-color, 15%);
+  $shadow-color: lighten($main-color, 50%);
+  text-shadow: 
+    -2px -2px 0 $shadow-color,
+    2px -2px 0 $shadow-color,
+    -2px 2px 0 $shadow-color,
+    2px 2px 0 $shadow-color;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: 200px;
+    height: 200px;
+    border-top-left-radius: 300px;
+    background-color: darken($primary-color, 25%);
+    background-image: 
+      radial-gradient(circle at 77% 77%, $main-color, $main-color 20px, transparent 20px),
+      linear-gradient(360deg, darken($primary-color, 25%), darken($primary-color, 25%) 40px, transparent 40px),
+      linear-gradient(270deg, darken($primary-color, 25%), darken($primary-color, 25%) 40px, transparent 40px),
+      linear-gradient(360deg, transparent, transparent 40px, #fff 40px, #fff 42px, transparent 42px),
+      linear-gradient(270deg, transparent, transparent 40px, #fff 40px, #fff 42px, transparent 42px),
+      radial-gradient(circle at 100% 100%, $primary-color, $primary-color 150px, transparent 150px);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+.pitch-input {
+  display: flex;
+  // transform: translateX(110px);
+  &__digit {
+    width: 50px;
+    height: 50px;
+    margin: 0 0.5em;
+    border-radius: 100%;
+    border: 0;
+    text-align: center;
+    font-family: $main-font;
+    font-weight: 700;
+    font-size: 1.3em;
+    color: darken($main-color, 30%);
+    box-shadow: 0 0 0 4px darken($main-color, 8%);
+    &:focus {
+      outline: 0;
+      caret-color: transparent;
+      background-color: lighten($point-color, 30%);
+      box-shadow: 0 0 0 4px darken($point-color, 8%); 
+    }
+  }
+  button {
+    padding: 0 0.8em;
+    border: 0;
+    font-size: 1.5em;
+    font-family: $design-font;
+  }
+  &__btn-pitch {
+    margin-left: 0.8em; 
+    background: darken($point-color, 10%);
+    color: #fff;
+  }
+  &__btn-restart {
+    margin-left: 0.3em;
+    background: $primary-color;
+    color: #fff;
+  }
+}
+
+.game-result {
+  width: 300px;
+  padding: 0 1em 0.5em;
+  margin-top: 1em;
+  color: #fff;
+  background-color: darken($primary-color, 15%);
+  &__title {
+    margin: 0;
+    padding: 0.8em 0 0.5em;
+    text-align: center;
+    border-bottom: 2px solid #fff;
+  }
+  &__list {
+    list-style: none;
+    padding: 0;
+    li {
+      display: flex;
+      align-items: center;
+      &:not(:first-child) {
+        margin-top: 0.8em;
+        padding-top: 0.2em;
+        border-top: 1px solid #fff;
+      }
+    }
+    .digit {
+      width: 30px;
+      height: 40px;
+      font-size: 1.2em;
+      font-family: $sub-design-font;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #fff;
+      margin-top: 0.3em;
+      margin-right: 0.2em;
+    }
+    .txt {
+      margin-left: 1em;
+      font-size: 1em;
+      em {
+        font-size: 1.5em;
+        font-family: $sub-design-font;
+      }
+    }
+  }
 }
