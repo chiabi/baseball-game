@@ -4,7 +4,7 @@ $point-color: #A8383B;
 $main-font: 'Open Sans', sans-serif;
 $design-font: 'Anton', sans-serif;
 $sub-design-font: 'Pangolin', cursive;
-// $sub-font: 'Nanum Gothic', sans-serif;
+$sub-kor-font: 'Nanum Gothic', sans-serif;
 
 @import url('https://fonts.googleapis.com/css?family=Anton|Nanum+Gothic|Open+Sans|Pangolin');
 
@@ -28,7 +28,7 @@ body {
   align-items: center;
 }
 .game-title {
-  margin: 1em 0 0.5em;
+  margin: 1em 0 2em;
   color: darken($point-color, 10%);
   font-size: 3em;
   font-family: $design-font;
@@ -62,8 +62,36 @@ body {
     transform: translate(-50%, -50%) rotate(45deg);
   }
 }
+.pitch {
+  position: relative;
+  &-message--invalid {
+    position: absolute;
+    left: 0.5em;
+    bottom: 100%;
+    padding: 1em 0 1em 30px;
+    line-height: 1.5;
+    font-family: $sub-kor-font;
+    font-weight: 700;
+    color: $point-color;
+    &:before {
+      content: '!';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid $point-color;
+      border-radius: 100%; 
+      line-height: 20px;
+      font-size: 0.9em;;
+      text-align: center;
+      transform: translateY(-50%)
+    }
+  }
+}
 .pitch-input {
   display: flex;
+  top: 0;
   // transform: translateX(110px);
   &__digit {
     width: 50px;
@@ -89,6 +117,7 @@ body {
     border: 0;
     font-size: 1.5em;
     font-family: $design-font;
+    cursor: pointer;
   }
   &__btn-pitch {
     margin-left: 0.8em; 
